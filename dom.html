@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <h1 style="color:palevioletred">estudando o DOM :)</h1>
+
+        <input type="text" id="text-name" placeholder="Qual é o seu nome?" value="">
+        <button onclick="writer()">Só clica!</button>
+
+        <br> <br>
+        <input type="text" id="name-surname" value="">
+
+        <h1 style="color:palevioletred" id="text-msg"></h1>
+
+        <p>evie evie evie</p>
+        <p>evie evie evie</p>
+        <p>evie evie evie</p>
+        <p>evie evie evie</p>
+        <p>evie evie evie</p>
+        <p>evie evie evie</p>
+        <p>evie evie evie</p>
+        <p>evie evie evie</p>
+        <p>evie evie evie</p>
+        <p>evie evie evie</p>
+       
+        <script>
+            (function(){
+            //     var name = prompt("Qual é o seu nome?");
+            //     document.querySelector("#msg #text-msg").innerHTML = "Olá, <u>" + name + "</u>";
+            var paragraphs = document.querySelectorAll('p');
+            var pos = 0;
+
+            while (paragraphs[pos]){
+                paragraphs[pos].textContent = "hacked by evie :)))";
+                pos++;
+            }
+            })();
+
+            var textNameSurname = document.querySelector("#name-surname");
+            var name = "Evele";
+            var surname = "Lemos";
+            textNameSurname.value = name + " " + surname;
+            textNameSurname.disabled = true;
+
+            var textName = document.querySelector("#text-name");
+            function writer(){
+                var name = textName.value;
+                document.querySelector("#text-msg").innerHTML = "Olá, <u>" + name + "</u>!";
+            }
+
+        </script>
+    </body>
+</html>

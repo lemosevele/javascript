@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <h1 style="color:rgb(23, 144, 192)">estudando objetos :)</h1>
+
+        <script>
+            var caneta = {
+                marca: "bic",
+                cor: "azul",
+                mudaCor: function(cor){
+                    this.cor = cor;
+                }
+            }
+
+            var caneta1 = {
+                marca: "bic",
+                cor: "verde",
+                mudaCor: mudaCor
+            }
+
+            function mudaCor(cor){
+                this.cor = cor;
+            }
+            
+            caneta.mudaCor("vermelha");
+            console.log(caneta);
+
+            caneta1.mudaCor("preta");
+            console.log(caneta1);
+
+            function Caneta(cor, preco, marca){
+                this.cor = cor;
+                this.preco = preco || 1;
+                this.marca = marca;
+
+                this.mudaCor = function(cor){
+                    this.cor = cor;
+                }
+            }
+
+            var caneta2 = new Caneta("rosa", 2.4, "bic");
+            console.log(caneta2);
+
+            var pessoa1 = {
+                nome: "evele",
+                sobrenome: "lemos"
+            }
+            
+            var pessoa2 = {
+                nome: "simba",
+                sobrenome: "kelle"
+            }
+
+            var pessoa3 = {
+                nome: "maria",
+                sobrenome: "felipa"
+            }
+
+            var pessoas = [];
+            pessoas.push(pessoa1);
+            pessoas.push(pessoa2);
+            pessoas.push(pessoa3);
+
+            for (var i = 1; i <= 3; i++){
+                console.log(window["pessoa"+i].nome + " " + window["pessoa"+i].sobrenome);
+            }
+
+            var i = 0;
+            while(pessoas[i]){
+                console.log(pessoas[i].nome + " " + pessoas[i].sobrenome);
+                i++;
+            }
+           
+        </script>
+    </body>
+
+</html>

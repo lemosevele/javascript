@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <style>
+            .done{
+                text-decoration: line-through;
+                color: violet;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h1 style="color:rgb(132, 241, 58)">estudando eventos :)</h1>
+
+        <div>
+            <input id="txtTask" type="text">
+            <button id="btnTask">cadastrar tarefa</button>
+            <ul>
+                <li>estudar javascript - DOM</li>
+                <li>estudar javascript - eventos</li>
+                <li>jogar lol</li>
+            </ul>
+        </div>
+
+
+        <script>
+            ul = document.querySelector("ul");
+            lis = ul.querySelectorAll("li");
+            btnTask = document.querySelector("#btnTask"); //recupera botão de add task
+            txtTask = document.querySelector("#txtTask") //recupera input de nome da task
+
+            btnTask.addEventListener("click", addTask);
+
+            txtTask.addEventListener("keyup", function(e){
+                if(e.keyCode === 13){
+                    addTask();
+                }
+            });
+
+            function addTask(){
+                //var task = "<li>" + txtTask.value + "</li>";
+                //ul.innerHTML += task;
+
+                //novo elemento do DOM, fica perdida na memória, não está atrelada ao documento e nem possui valor
+                var li = document.createElement("li");
+                var text = document.createTextNode(txtTask.value); //cria um texto para que possa ser atrelado dentro de um elemento do DOM
+                li.appendChild(text); //inserindo texto na li
+                ul.appendChild(li); //inserindo li na ul                    
+                txtTask.value = ""; //limpa valor do input ao clicar no botão
+                txtTask.focus(); //coloca o cursor do mouse o input, pra não precisar clicar pra digitar
+            }
+
+            ul.addEventListener("click", function(e){
+                if(e.target.nodeName === "LI"){
+                    removeTask(e.target);
+                }
+            })
+
+            function removeTask(li){
+                //para remover um elemento html, é preciso acessar o elemento pai e remover o filho
+                if(confirm("deseja remover a tarefa \n" +li.textContent + "? ")){
+                    li.parentNode.removeChild(li); //acessa elemento pai pelo parentNode
+                }
+            }
+
+        </script>
+
+    </body>
+    
+</html>

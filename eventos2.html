@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <style>
+            .done{
+                text-decoration: line-through;
+                color: violet;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h1 style="color:rgb(132, 241, 58)">estudando eventos :)</h1>
+
+        <div>
+            <textarea id="msg" cols="50" rows="2" maxlength="100"></textarea>
+            <div id="restaContainer" style="display: none;"> Restam <span id="resta"></span> caracteres.</div>
+
+            <!-- <textarea id="msg" oninput=""input()></textarea> 
+            isso não funciona, o this na função input é o obj window, não entendi pq..-->
+        </div>
+
+        <br>
+        <div>
+            <form action="#">
+                <textarea cols="50" rows="10" readonly>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centurie.</textarea>
+                    <br>
+                    <label>
+                        <input id="check" type="checkbox">
+                        Li e aceito os termos desse contrato.
+                    </label>
+                    <br>
+                    <input id="btn" type="submit" value="Enviar">
+            </form>
+        </div>
+        
+        <br>
+        <div>
+            <button>button 1</button>
+            <button>button 2</button>
+            <button>button 3</button>
+            <button>button 4</button>
+            <button>button 5</button>
+        </div>
+
+        <br>
+        <div>
+            <input id="txtTask" type="text">
+            <button id="btnTask">cadastrar tarefa</button>
+            <ul>
+                <li>estudar javascript - DOM</li>
+                <li>estudar javascript - eventos</li>
+                <li>jogar lol</li>
+            </ul>
+        </div>
+
+        <script>
+
+            (function(){
+
+                var msg = document.getElementById("msg");
+                var resta = document.getElementById("resta");
+                var restaContainer = document.getElementById("restaContainer");
+
+                var max = msg.maxLength;
+
+                function mostrarContainerRestante(){
+                     restaContainer.style.display = "block"; //exibe a mensagem só se o javascript for carregado, alterando o css
+                }
+           
+                mostrarContainerRestante();
+                mostrarCaracteresRestantes(max);
+                msg.addEventListener("input", checkLength);
+
+                //função que faz a subtração pra saber quantos caracteres ainda podem ser digitados
+                function checkLength(){
+                    var qtdDigitados = this.value.length;
+                    var qtdRestantes = parseInt(max) - parseInt(qtdDigitados);
+                    mostrarCaracteresRestantes(qtdRestantes);
+                }  
+
+                //atualiza os caractres 
+                function mostrarCaracteresRestantes(n){
+                    resta.textContent = n;
+                }
+
+
+                var btn = document.getElementById("btn");
+                var check = document.getElementById("check");
+
+                btn.disabled = toggleBtn();
+
+                check.addEventListener("change", function(){
+                    btn.disabled = toggleBtn();
+                });
+
+                function toggleBtn(){
+                    return !check.checked;
+                }
+
+                var btns = document.getElementsByTagName("button");
+                for(var x = 0 ; x < btns.length ; x++){
+                    btns[x].addEventListener("click", function(){
+                        console.log(this.textContent);
+                   });
+                }
+
+                ul = document.querySelector("ul");
+                lis = ul.querySelectorAll("li");
+                btnTask = document.querySelector("#btnTask"); //recupera botão de add task
+                txtTask = document.querySelector("#txtTask") //recupera input de nome da task
+
+                btnTask.addEventListener("click", addTask);
+
+                txtTask.addEventListener("keyup", function(e){
+                    if(e.keyCode === 13){
+                        addTask();
+                    }
+                });
+
+                function addTask(){
+                    //var task = "<li>" + txtTask.value + "</li>";
+                    //ul.innerHTML += task;
+
+                    //novo elemento do DOM, fica perdida na memória, não está atrelada ao documento e nem possui valor
+                    var li = document.createElement("li");
+                    var text = document.createTextNode(txtTask.value); //cria um texto para que possa ser atrelado dentro de um elemento do DOM
+                    li.appendChild(text); //inserindo texto na li
+                    ul.appendChild(li); //inserindo li na ul                    
+                    txtTask.value = ""; //limpa valor do input ao clicar no botão
+                    txtTask.focus(); //coloca o cursor do mouse o input, pra não precisar clicar pra digitar
+
+                    addEvent(li); //cria novo addEventListener pra nova li adicionada
+                }
+
+                function addEvent(li){ //cria novo addEventListener pra nova li adicionada
+                    li.addEventListener("click", toggleDone);
+                }
+
+                for (var i = 0 ; i < lis.length; i++){
+                    //lis[i].addEventListener("click", toggleDone); //tasks adds depois, não passam aqui. não possuem eventos ligdos a elas
+                    addEvent(lis[i]);
+                }
+
+                function toggleDone(){
+                    this.classList.toggle('done'); //aplica uma classe ou remove se já tiver sido aplicada
+                }
+
+                //há um problema nessa abordagem,cada li possui um evento, vamos inserir evento na ul
+                //em eventos3.html
+            })();
+            
+
+        </script>
+
+    </body>
+</html>

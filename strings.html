@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <h1 style="color:rgb(52, 132, 206)">estudando strings :)</h1>
+
+        <div>
+            <input type="text" id="nome">
+            <button id="btn">Enviar</button>
+            <h3 id=nomeFormatado></h3>
+        </div>
+        
+        <div>
+            <p>Lorem Ipsum is simply.</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>            
+        </div>
+
+        <script>
+            var s1 = "hello world evie"; //literal
+            var s2 = new String("hello world evie"); //objeto
+
+            console.log(s1.replace("o", "O")); //troca a primeira ocorrência da string
+            console.log(s1.indexOf("o")); //retorna a posição da primeira ocorrência
+            console.log(s1.lastIndexOf("o")); //retorna posição da última ocorrência
+            console.log(s1.slice(5)); //retorna um pedaço de uma string, pode receber pos inicial e final
+            console.log(s1.substring(5)); //retorna um pedaço de uma string, pode receber pos inicial e final
+
+            //a diferença do substring pro slice é que o substring faz a inversão automatica se passar o primeiro
+            //parâmetro maior que o segundo
+            console.log(s1.slice(10, 5));
+            console.log(s1.substring(10, 5)); //é o mesmo que passar 5,10
+            console.log(s1.split(" ")); //retorna um array, string é quebrada pelo parâmetro passado
+            console.log(s1.toLocaleUpperCase()); //converte pra maiúsculo
+            console.log(s1.toLocaleLowerCase()); //converte para minúsculo
+
+            var nome = document.querySelector("#nome");
+            var btn = document.querySelector("#btn");
+            var nomeFormatado = document.querySelector("#nomeFormatado");
+
+            btn.addEventListener("click", function(){
+                var posUltimo = nome.value.lastIndexOf(" ");
+                if (posUltimo <= 0 ){
+                    nomeFormatado.textContent = nome.value;
+                }else{
+                    var ultimoNome = nome.value.slice(posUltimo+1);
+                    var primeiroNome = nome.value.slice(0, posUltimo);
+
+                    nomeFormatado.textContent = ultimoNome + ", " + primeiroNome;
+                }
+            });
+
+            ps = document.querySelectorAll("p");
+            x = 0;
+            while(ps[x]){
+                ps[x].innerHTML = formatarTexto(ps[x].innerHTML);
+                x++;
+            }
+
+            function formatarTexto(texto){
+                maxCaracteres = 100;
+                if (texto.length <= maxCaracteres) return texto;
+                var subTexto = texto.slice(0, maxCaracteres);
+                return subTexto + " ...";
+            } 
+              
+        </script>
+    
+    </body>
+</html>

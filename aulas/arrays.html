@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <h1 style="color:rgb(160, 66, 144)">estudando arrays :)</h1>
+
+        <script>
+            var array = new Array("a", 2);
+            var arr = ['1', 3, "b", 4, "f", 9, 16, 6];
+            var arr2 = [1, 2, 3, 4, 5]
+
+            //essas funções recebem elemento, índice e array. nessa ordem
+            //apenas o elemento é obrigatorio
+
+           var sohNumeros = arr.every( function(el){
+               //every retorna true se toda a condição for true
+                return typeof el === 'number';
+            })
+            console.log(sohNumeros);
+
+            var aoMenosUmNumero = arr.some( function(el){
+               //some retorna true se tiver pelo menos uma condição true
+                return typeof el === 'number';
+            })
+            console.log(aoMenosUmNumero);
+
+            var numeros = arr.filter(function(el){
+                return typeof el === 'number';
+            })
+            console.log("numeros", numeros);
+
+            arr.forEach(function(el, i, arr){
+                console.log('elemento: ', el, '| índice: ', i, '| array: ', arr.toString());
+            })
+
+            //os métodos indexOf e lastIndexOf podem receber um segundo argumento que indica,
+            //que a busca será feita a partir da posição passada por argumento
+            console.log(arr.indexOf("b")); //pega posição do elemento no array
+            console.log(arr.lastIndexOf("b")); //pega a última do elemento no array
+            console.log(arr.lastIndexOf("b", 3)); 
+
+            //multiplica todos os números pelo índice
+            numeros = numeros.map(function(el, i, arr){
+                return el*i;
+            })
+            console.log("numeros", numeros);
+
+            //concatena dois arrays
+            var a = arr.concat(numeros, arr2, '100');
+            console.log(a);
+
+            //transforma um array em string separando os elementos por vírgula
+            //se receber parâmetro, separa pelo parâmetro recebido
+            str = a.join('-');
+            console.log(str);
+
+        </script>
+
+    </body>
+</html>

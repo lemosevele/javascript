@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <h1 style="color:rgb(160, 66, 144)">exercícios sobre arrays :)</h1>
+
+        <script>
+
+            function calculaMedia(){
+                var total = 0;
+                var qtd = arguments.length;
+                var notas = [];
+                var x = 0;
+
+                while(typeof arguments[x] === 'number'){
+                    total += arguments[x];
+                    notas.push(arguments[x]);
+                    x++;
+                }
+
+                // var temZero = notas.some(function(nota){
+                //     return nota === 0;
+                // })
+                
+                //arrow function
+                var temZero = notas.some((nota) =>{
+                    return nota === 0;
+                })
+
+                var nota = temZero ? "reprovado" : (total/qtd).toFixed(2);
+
+                return nota;
+            }
+
+            media = calculaMedia(1,2,4);
+            console.log(media);
+
+            media = calculaMedia(0,1,2);
+            console.log(media);
+
+            //ES6 - spread operator, entende cada elemento do array como 1 argumento passado p funcao
+            media = calculaMedia(...[1,2,4]);
+            console.log(media);
+
+            //tbm entende cada elemento do array como 1 argumento passado p funcao
+            media = calculaMedia.apply(this, [1,2,4]); 
+            console.log(media);
+
+        </script>
+
+    </body>
+</html>

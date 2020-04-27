@@ -35,14 +35,14 @@
                 var x = 0;
                 var media = 0;
 
-                while(arguments[x] === 'number'){
+                while(typeof arguments[x] === 'number'){
                     result += arguments[x];
                     x++;
                 }
                 media = result/arguments.length;
-                console.log(media);
+                console.log("media: ", media);
             }
-            calculaMedia(10,10,5);
+            calculaMedia(10,10,10);
 
             function calculaIMC(peso, altura){
                 return peso / (altura*altura);

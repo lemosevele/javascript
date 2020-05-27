@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+
+        <h1 style="color:rgb(132, 241, 58)">javascript antes do framework - origamid</h1>
+        
+        <a href="https://www.youtube.com/watch?v=j6iSONAO6sQ&list=PL9rc_FjKlX39T78CUANwmdta_d1CgUtMt&index=1" target="_blank"
+        >https://www.youtube.com/watch?v=j6iSONAO6sQ&list=PL9rc_FjKlX39T78CUANwmdta_d1CgUtMt&index=1</a>
+
+         <p>conceitos importantes do javascript antes de aprender um framework</p>
+
+        <script>
+
+            const upperName = function(name){
+                return name.toUpperCase();
+            }
+
+            //arrow function - 1 argumento e 1 linha de return
+            const lowerName = name => name.toLowerCase(); //se tiver um parâmetro não precisa dos parenteses ()
+                                                        //se retornar apenas 1 linha, não precisa do 'return' nem das chaves {}
+
+            //dois argumentos
+            const upperNameSurname = (name,surname) =>{
+                name = name + " " + surname;
+                return name.toUpperCase();
+            }
+
+        </script>
+
+    </body>
+</html>

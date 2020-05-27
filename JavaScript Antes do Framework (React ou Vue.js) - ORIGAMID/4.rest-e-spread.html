@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+
+        <h1 style="color:rgb(132, 241, 58)">javascript antes do framework - origamid</h1>
+        
+        <a href="https://www.youtube.com/watch?v=j6iSONAO6sQ&list=PL9rc_FjKlX39T78CUANwmdta_d1CgUtMt&index=1" target="_blank"
+        >https://www.youtube.com/watch?v=j6iSONAO6sQ&list=PL9rc_FjKlX39T78CUANwmdta_d1CgUtMt&index=1</a>
+
+         <p>conceitos importantes do javascript antes de aprender um framework</p>
+
+        <script>
+
+            function showList(empresa, ...clientes){ //...clientes - rest
+                console.log(empresa);
+                console.log(clientes);
+            }
+
+            showList("empresa de evele", "evele", "lemos", "simba");
+
+            //spread
+            const numeros = [43, 54, 12, 767, 9, 81];
+            console.log("número máximo é: ", Math.max(numeros));
+            console.log("número máximo é: ", Math.max(...numeros));
+
+            const carro = {cor: "rosa", ano: "2020"};
+            const carro1 = carro; //carro1 e carro referenciam o mesmo objeto
+            const cloneCarro = { ...carro, turbo: true} //carro e cloneCarro não referenciam o mesmo objeto
+
+
+        </script>
+
+    </body>
+</html>

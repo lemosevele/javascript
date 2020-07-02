@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+
+        <h1 style="color:rgb(132, 241, 58)">javascript antes do framework - origamid</h1>
+        
+        <a href="https://www.youtube.com/watch?v=j6iSONAO6sQ&list=PL9rc_FjKlX39T78CUANwmdta_d1CgUtMt&index=1" target="_blank"
+        >https://www.youtube.com/watch?v=j6iSONAO6sQ&list=PL9rc_FjKlX39T78CUANwmdta_d1CgUtMt&index=1</a>
+
+         <p>conceitos importantes do javascript antes de aprender um framework</p>
+
+        <script>
+            const url = 'https://pokeapi.co/api/v2/pokemon/1/';
+            
+            async function get(url){
+                const res = await fetch(url);
+                const json = await res.json();
+                return json;
+            }
+
+            get(url);
+            
+
+
+        </script>
+
+    </body>
+</html>

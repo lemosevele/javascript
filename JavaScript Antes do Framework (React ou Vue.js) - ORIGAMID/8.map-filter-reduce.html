@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+
+        <h1 style="color:rgb(132, 241, 58)">javascript antes do framework - origamid</h1>
+        
+        <a href="https://www.youtube.com/watch?v=j6iSONAO6sQ&list=PL9rc_FjKlX39T78CUANwmdta_d1CgUtMt&index=1" target="_blank"
+        >https://www.youtube.com/watch?v=j6iSONAO6sQ&list=PL9rc_FjKlX39T78CUANwmdta_d1CgUtMt&index=1</a>
+
+         <p>conceitos importantes do javascript antes de aprender um framework</p>
+
+        <script>
+
+            //map e filter retornam um novo array
+
+            const precos = [
+                "Créditos",
+                "R$ 200",
+                "R$ 400",
+                "Contas Pagar",
+                "R$ 300",
+                "R$ 400",
+                "Meus Dados"
+            ];
+            
+            //filter quando a condição for verdade inclui o elemento no array
+            //map inclui no array a transformação do elemento
+            //reduce retorna sempre um valor único
+
+            precosFiltro = precos.filter(preco =>{
+                // if (preco.includes("R$")){
+                //     return true;
+                // }else{
+                //     return false;
+                // }
+
+                return preco.includes("R$");
+            });
+            console.log(precosFiltro);
+
+            precosNumero = precosFiltro.map(preco => +preco.replace("R$ ", "")); //o + na frente transforma str em num
+            console.log(precosNumero);
+
+            soma = precosNumero.reduce((acumulador, atual)=>{
+                console.log(acumulador, atual);
+                return acumulador+atual;  
+            }, 0);
+            console.log(soma);
+
+        </script>
+
+    </body>
+</html>

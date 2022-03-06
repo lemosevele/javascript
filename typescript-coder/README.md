@@ -1,13 +1,20 @@
 Comandos utilizados:
+
     tsc --init
+    
     npm init -y
+    
     npm i -s live-server
+    
     npm i -g ts-node
 
 
 Comando para executar projeto:
+
     npm install
+    
     primeiro terminal: npm start
+    
     segundo terminal: tsc -w
 
 
